@@ -5,7 +5,8 @@ if (empty($_POST)) {//lo direcciono al index principal
 }
 
 require "./../conexion/conexion.php";
-$con = $return;
+$db = new conexion();
+$con = $db->conectar();
 
 
 

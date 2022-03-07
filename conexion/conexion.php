@@ -1,32 +1,24 @@
-<?php 
+<?php
 
 class conexion{
-    private $host = "localhost";
     private $user = "root";
-    private $password = "";
-    private $db = "crud_adsi";
-    private $conect;
+    private $pass = "";
 
+    function conectar(){
 
-    public function __construct(){
-        $connection =  "mysql:host=".$this->host.";dbname=".$this->db.";charset=utf8";
         try{
-            $this->conect = new PDO($connection,$this->user,$this->password);
-            $this->conect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-             
-            }
-            catch(Exception $error){
-                $this->conect='Error de conexion';
-                echo "Error". $error->getMessage();
-            }
-         
+        $pdo = new PDO('mysql: host=localhost; dbname=crud_adsi',$this->user,$this->pass); 
+       
         }
-         
-    }
-    
-    
-$conect = new conexion();
-$return = new PDO();
+        catch(PDOException $error){
+            echo "no se pude conectar" . $error->getMessage();
+        }
 
+
+       }
+}
+
+$nuevaconexion = new  conexion();
+$nuevaconexion -> conectar();
 ?>
     
